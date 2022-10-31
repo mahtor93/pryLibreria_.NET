@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model pryBookstore.Models.ViewModels.ListBookViewModel;
+
+<h1 class="bd-title text-center" id="content">Listado de Libros</h1>
+ <div class="container mt-3 ">
+        <form asp-action="FindBook" method="GET">
+            <div class="row justify-content-center p-5">
+                <div class="col-2 p-3">
+                    
+                    <label><b>Categoría:</b></label>
+                </div>
+                <div class="col-6 p-3 center">
+                    <select class="form-select" name="category_bookFind">
+                        <option>Seleccione</option>
+                        @foreach(var item in Model.categoriesVM)
+                        {
+                        <option>@item.Title</option>
+                        }
+                     </select>
+                </div>
+
+                <div class="col-1">
+                    <div class="col-2 p-1">
+                        <input type="hidden" value="@ViewData["category_bookFind"]" name="Category_bookFind" />
+                        <button type="submit" class="btn btn-dark m-1">Buscar</button>
+                    </div>
+
+                 </div>
+            </div>
+        </form>
+
+
+        <table class="table table-border">
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Categoría</th>
+                    <th>Autor</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.booksVM)
+            {
+                <tr>
+                <td>@item.Title</td>
+                <td>@item.Category</td>
+                <td>@item.Author</td>
+                <td>@item.Stock</td> 
+                </tr>    
+            }
+
+                
+            </tbody>
+        </table>
+
+    </div>

@@ -1,0 +1,93 @@
+﻿
+@model pryBookstore.Models.ViewModels.CreateBookViewModel;
+<div class="container px-1 mt-3">
+
+        <div class="card">
+            <form asp-action="Create" class="form-group" method="POST">
+            <div class="card-header"><b>Nuevo Libro</b></div>
+            <div class="card-body">
+
+                <div class="row p-1"> <!--TITULO & PAGS TOTALES-->
+                    <div class="col-sm-2 p-1">
+                        @Html.LabelFor(model => model.bookCVM.Title)
+                    </div>
+                    <div class="col-sm-4 p-1"> 
+                        @Html.TextBoxFor(model =>Model.bookCVM.Title)
+                         <!--INPUT PARA TITULO-->
+                        @Html.ValidationMessageFor(model=> Model.bookCVM.Title,"",new{@class="text-danger"})
+                    </div>
+                    
+                    <div class="col-sm-2 p-1">
+                        @Html.LabelFor(model => model.bookCVM.NumberPages)
+                    </div>
+                    <div class="col-sm-4 p-1">
+                        @Html.TextBoxFor(model => model.bookCVM.NumberPages)
+                        <!--INPUT PARA PAGINAS TOTALES-->
+                        @Html.ValidationMessageFor(model=> Model.bookCVM.NumberPages,"",new{@class="text-danger"})
+                    </div>
+                </div>
+
+                <div class="row p-1">
+                    <div class="col-sm-2 p-1">
+                        @Html.LabelFor(model => model.bookCVM.Editorial)
+                    </div>
+                    <div class="col-sm-4 p-1">
+                        @Html.TextBoxFor(model =>model.bookCVM.Editorial)
+                        <!--INPUT PARA EDITORIAL-->
+                        @Html.ValidationMessageFor(model=> Model.bookCVM.Editorial,"",new{@class="text-danger"})
+                    </div>
+                    <div class="col-sm-2 p-1">
+                        @Html.LabelFor(model=>model.bookCVM.Stock)
+                    </div>
+                    <div class="col-sm-4 p-1">
+                        @Html.TextBoxFor(model =>model.bookCVM.Stock)
+                         <!--INPUT PARA STOCK INICIAL-->
+                         @Html.ValidationMessageFor(model=> Model.bookCVM.Stock,"",new{@class="text-danger"})
+                    </div>
+                </div>
+
+                <div class="row p-1">
+                    <div class="col-sm-2 p-1">
+                        @Html.LabelFor(model => model.bookCVM.Category)
+                    </div>
+                    <div class="col-sm-4 p-1">
+
+                    @Html.DropDownListFor(model => model.bookCVM.Category,
+                        new SelectList(Model.categoriesCVM),
+                        new {Name="category", @class="form-control"})
+
+                    </div>
+
+                    <div class="col-sm-2 p-1">
+                        @Html.LabelFor(model =>model.bookCVM.ReleaseDate)
+                    </div>
+                    <div class="col-sm-4 p-1">
+                        <input type="date" name="releasedate">
+                        <!--INPUT PARA FECHA INICIAL-->
+                    </div>
+
+
+                </div>
+
+                <div class="row p-1">
+                    <div class="col-sm-2 p-1">
+                        @Html.LabelFor(model => model.bookCVM.Author)
+                    </div>
+                    <div class="col-sm-4 p-1"> 
+                        @Html.TextBoxFor(model => model.bookCVM.Author)
+                        <!--INPUT PARA AUTOR-->
+                        @Html.ValidationMessageFor(model=> Model.bookCVM.Author,"",new{@class="text-danger"})
+                    </div>
+                    <div class="col-sm-6 align-self-center"> 
+                        <button type="submit" class="btn btn-dark m-6 ">Guardar</button> 
+                    </div>
+                </div>
+
+                </div>
+            </form>
+            </div>
+        </div>
+
+
+
+    
